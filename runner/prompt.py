@@ -48,8 +48,27 @@ Give your reason and a score from 0 to 10 in JSON format:
 """
 
 
+# FILTER_PROMPT = """
+# You are an AI judge focused on extracting ONLY the useful reasoning steps that directly contribute to answering the question.
+#
+# <Task>
+# {task}
+# </Task>
+#
+# <thinking_process>
+# {reasoning_content}
+# </thinking_process>
+#
+# Your job is to:
+# - Copy only the reasoning that logically leads to the final answer.
+# - Skip irrelevant thoughts, re-checks, confirmations, meta-thinking, or commentary.
+# - Do NOT paraphrase. Do NOT summarize. Just copy the useful reasoning steps.
+#
+# Output your result within <useful_content> and </useful_content> tags.
+# """
+
 FILTER_PROMPT = """
-You are an AI judge focused on extracting ONLY the useful reasoning steps that directly contribute to answering the question.
+You are an AI assistant tasked with identifying and extracting ONLY the critical reasoning steps that directly lead to the final code solution.
 
 <Task>
 {task}
@@ -60,7 +79,7 @@ You are an AI judge focused on extracting ONLY the useful reasoning steps that d
 </thinking_process>
 
 Your job is to:
-- Copy only the reasoning that logically leads to the final answer.
+- Copy only the reasoning that logically leads to the final code.
 - Skip irrelevant thoughts, re-checks, confirmations, meta-thinking, or commentary.
 - Do NOT paraphrase. Do NOT summarize. Just copy the useful reasoning steps.
 
